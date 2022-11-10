@@ -21,19 +21,19 @@ async function run() {
 
         // Read Api
 
-        app.get('/', async (req, res) => {
+        app.get('/limitedservices', async (req, res) => {
             const query = {};
             const cursor = serviceCollection.find(query);
             const limitedServices = await cursor.limit(3).toArray();
             res.send(limitedServices);
         });
 
-        // app.get('/services', async (req, res) => {
-        //     const query = {};
-        //     const cursor = serviceCollection.find(query);
-        //     const services = await cursor.toArray();
-        //     res.send(services);
-        // });
+        app.get('/services', async (req, res) => {
+            const query = {};
+            const cursor = serviceCollection.find(query);
+            const services = await cursor.toArray();
+            res.send(services);
+        });
 
 
     } finally {
