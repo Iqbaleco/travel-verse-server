@@ -19,6 +19,7 @@ async function run() {
         const serviceCollection = client.db('travelServiceDB').collection('services');
         const reviewCollection = client.db('travelServiceDB').collection('reviews');
 
+        // Read Api
 
         app.get('/services', async (req, res) => {
             const query = {};
