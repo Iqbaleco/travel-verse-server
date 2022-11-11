@@ -23,7 +23,7 @@ async function run() {
 
         app.get('/limitedservices', async (req, res) => {
             const query = {};
-            const cursor = serviceCollection.find(query);
+            const cursor = serviceCollection.find(query).sort({ rating: 1 });
             const limitedServices = await cursor.limit(3).toArray();
             res.send(limitedServices);
         });
@@ -45,8 +45,8 @@ async function run() {
 
         app.get('/limitreviews', async (req, res) => {
             const query = {};
-            const cursor = reviewCollection.find(query);
-            const limitedReviews = await cursor.limit(3).toArray();
+            const cursor = reviewCollection.find(query).sort({ rating: 1 });
+            const limitedReviews = await cursor.limit(5).toArray();
             res.send(limitedReviews);
         });
 
